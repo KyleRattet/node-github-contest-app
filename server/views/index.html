@@ -10,7 +10,7 @@
     <h1>{{ title }}</h1>
     <p>Welcome to {{ title }}</p>
 
-    <form method='POST' action='/submit'>
+    <form method='POST' action='/'>
       <div class="form-group">
         <label for="new-submission">New Submission</label>
         <input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="gitHub Name">
@@ -22,8 +22,9 @@
 
     <br>
 
+    {% if message %}
     <div class="alert alert-warning" id="max-entry"role="alert">{{message}}</div>
-
+    {% endif %}
 
   </div>
 
