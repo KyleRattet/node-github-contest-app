@@ -10,6 +10,21 @@
     <h1>{{ title }}</h1>
     <p>Welcome to {{ title }}</p>
 
+    <form method='POST' action='/submit'>
+      <div class="form-group">
+        <label for="new-submission">New Submission</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" name="name" placeholder="gitHub Name">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="url" placeholder="gitHub URL">
+        <input type="text" class="form-control" id="exampleInputEmail1" name="image" placeholder="gitHub Image">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit Entry</button>
+    </form>
+
+    <br>
+
+    <div class="alert alert-warning" id="max-entry"role="alert">{{message}}</div>
+
+
   </div>
 
 {% endblock %}
