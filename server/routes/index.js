@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 });
 
 //post to get entry submission, create a new Submission instance
-router.post('/', function(req, res, next) {
+router.post('/voting', function(req, res, next) {
 
   if (submissionArray.length >= 7) {
     res.render('index' , {
@@ -24,11 +24,18 @@ router.post('/', function(req, res, next) {
     });
 
   } else {
-  var newSub = new Submission (req.body.name, req.body.url, req.body.image);
-  submissionArray.push(newSub);
-  console.log(submissionArray);
+    var newSub = new Submission (req.body.name, req.body.url, req.body.image);
+    submissionArray.push(newSub);
+    console.log(submissionArray);
+    res.render('voting', {
+      entries: submissionArray
+    });
+    // res.json('voting', {
+    //   message: "success",
+    //   output: submissionArray
+    // });
   }
 
-});
+  });
 
 module.exports = router;
