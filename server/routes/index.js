@@ -27,16 +27,17 @@ router.get('/', function(req, res, next) {
 });
 
 //post to get entry submission, create a new Submission instance
-router.post('/voting', function(req, res, next) {
+router.post('/submit', function(req, res, next) {
 
   if (submissionArray.length <= 3) {
       var newSub = new Submission (req.body.name, req.body.url, req.body.image);
     submissionArray.push(newSub);
     // sortSubmission(submissionArray, submissionArrayEven, submissionArrayOdd);
-    console.log(submissionArray, "submission array");
-    console.log(submissionArrayEven, "even array");
-    console.log(submissionArrayOdd, "odd array");
+    res.render('index', {
+      title: 'Submissions',
+      message: submissionArray.length
 
+    });
 
   } else {
     sortSubmission(submissionArray, submissionArrayEven, submissionArrayOdd);
