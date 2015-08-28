@@ -8,7 +8,19 @@ function Submission (githubName, githubURL, githubImage) {
   this.githubImage = githubImage;
 }
 
+function sortSubmission (arrayMain, arrayEven, arrayOdd) {
+
+  for (var i = 0; i < arrayMain.length; i++) {
+    if(i % 2 === 0) {
+      arrayEven.push(arrayMain[i]);
+    } else arrayOdd.push(arrayMain[i]);
+  }
+
+}
+
 var submissionArray = [];
+var submissionArrayEven = [];
+var submissionArrayOdd = [];
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Submissions' });
@@ -17,25 +29,25 @@ router.get('/', function(req, res, next) {
 //post to get entry submission, create a new Submission instance
 router.post('/voting', function(req, res, next) {
 
-  if (submissionArray.length >= 7) {
-    res.render('index' , {
-      title: 'Submissions',
-      message: "You've submitted the maximum number of entries."
-    });
+  if (submissionArray.length <= 3) {
+      var newSub = new Submission (req.body.name, req.body.url, req.body.image);
+    submissionArray.push(newSub);
+    // sortSubmission(submissionArray, submissionArrayEven, submissionArrayOdd);
+    console.log(submissionArray, "submission array");
+    console.log(submissionArrayEven, "even array");
+    console.log(submissionArrayOdd, "odd array");
+
 
   } else {
-    var newSub = new Submission (req.body.name, req.body.url, req.body.image);
-    submissionArray.push(newSub);
-    console.log(submissionArray);
+    sortSubmission(submissionArray, submissionArrayEven, submissionArrayOdd);
     res.render('voting', {
-      entries: submissionArray
+      even: submissionArrayEven,
+      odd: submissionArrayOdd
     });
-    // res.json('voting', {
-    //   message: "success",
-    //   output: submissionArray
-    // });
   }
 
   });
+
+
 
 module.exports = router;
