@@ -11,25 +11,159 @@
 
     <h1>{{ title }}</h1>
 
+    <div class="row">
+
+      <div class="col-xs-5">
+
+    <h2>Team Even</h2>
+
+    <div class="bs-example" data-example-id="striped-table">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+
+
+          <th>githubName</th>
+          <th>Votes</th>
+
+        </tr>
+      </thead>
+      <tbody>
+
+          {% for tally in evenTally %}
+          <tr>
+          <td>{{ tally.githubName }}</td>
+          <td>{{ tally.votes }}</td>
+          </tr>
+          {% endfor %}
+
+
+      </tbody>
+    </table>
+
+
+    </div>
+
+      </div>
+
+        <div class="col-xs-1">
+
+        <h2>VS.</h2>
+
+     <!--  {% for tally in oddTally %}
+        <p>vs.</p>
+      {% endfor %} -->
+      <div class="bs-example" data-example-id="striped-table">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+
+          <th>vs.</th>
+
+        </tr>
+      </thead>
+      <tbody>
+
+          {% for tally in evenTally %}
+          <tr>
+          <td>vs.</td>
+          </tr>
+          {% endfor %}
+
+
+      </tbody>
+    </table>
+
+
+
+      </div>
+
+      </div>
+
+     <div class="col-xs-5">
+
+
+
+    <h2>Team Odd</h2>
+
+    <div class="bs-example" data-example-id="striped-table">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+
+
+          <th>githubName</th>
+          <th>Votes</th>
+
+        </tr>
+      </thead>
+      <tbody>
+
+          {% for tally in oddTally %}
+          <tr>
+          <td>{{ tally.githubName }}</td>
+          <td>{{ tally.votes }}</td>
+          </tr>
+          {% endfor %}
+
+
+      </tbody>
+    </table>
+
+
+    </div>
+
+      </div>
+
+    </div>
+   <!--  <div class="row">
+
+      <div class="col-xs-5">
+
+
+
     <div id="evenVotes">
 
       <h2>Even Tally</h2>
+      <ol>
       {% for tally in evenTally %}
-        <p>githubName: {{tally.githubName}}; Votes: {{tally.votes}}</p>
+        <li>githubName: {{tally.githubName}}; Votes: {{tally.votes}}</li>
       {% endfor %}
+      </ol>
 
 
     </div>
+
+      </div>
+
+      <div class="col-xs-2">
+
+        <h2>VS.</h2>
+
+      {% for tally in oddTally %}
+        <p>vs.</p>
+      {% endfor %}
+
+
+
+      </div>
+
+      <div class="col-xs-5">
 
      <div id="oddVotes">
+        <h2>Odd Tally</h2>
 
-       <h2>Odd Tally</h2>
+      <ol>
       {% for tally in oddTally %}
-        <p>githubName: {{tally.githubName}}; Votes: {{tally.votes}}</p>
+        <li>githubName: {{tally.githubName}}; Votes: {{tally.votes}}</li>
       {% endfor %}
-
+      </ol>
     </div>
 
+      </div>
+
+
+    </div> -->
 
     {% endblock %}
     <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>

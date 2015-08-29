@@ -23,7 +23,7 @@ function sortSubmission (arrayMain, arrayEven, arrayOdd) {
 }
 
 
-// var submissionArray = [];
+var submissionArray = [];
 var submissionArrayEven = [];
 var submissionArrayOdd = [];
 
