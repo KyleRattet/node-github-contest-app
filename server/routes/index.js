@@ -22,10 +22,25 @@ function sortSubmission (arrayMain, arrayEven, arrayOdd) {
 
 }
 
+function roundOneWinner (arrayEven, arrayOdd) {
+
+
+
+  for (var i = 0; i < arrayEven.length; i++) {
+
+    if (arrayEven[i].votes > arrayOdd[i].votes) {
+      winnerEven.push(arrayEven[i]);
+    } else winnerOdd.push(arrayOdd[i]);
+  }
+
+}
+
 
 var submissionArray = [];
 var submissionArrayEven = [];
 var submissionArrayOdd = [];
+var winnerEven = [];
+var winnerOdd = [];
 
 
 var s1 = new Submission("s1", "1");
@@ -84,34 +99,44 @@ router.post('/vote/:id', function(req, res, next) {
 
 
 
-  // for (var i = 0; i < submissionArrayEven.length; i++) {
-  //   if (req.params.id ===submissionArrayEven[i].id) {
-  //     console.log("even button team");
-  //     submissionArrayEven[i].votes += 1;
-  //   } else {
-  //     for (var j = 0; j < submissionArrayOdd.length; j++) {
-  //       if(req.params.id === submissionArrayOdd[j].id) {
-  //         console.log("odd button team");
-  //         submissionArrayEven[j].votes += 1;
-  //       }
-  //     }
-  //   }
-  // }
-
-
-  // console.log(submissionArray[i].githubName);
-  // console.log(submissionArray[i].votes);
-  // console.log(submissionArray[j].githubName);
-  // console.log(submissionArray[j].votes);
-  // res.render('voting', {
-  //     even: submissionArrayEven,
-  //     odd: submissionArrayOdd
-  //   });
 });
 
 router.post('/results', function(req, res, next) {
   // sortSubmission(submissionArray, submissionArrayEven, submissionArrayOdd);
+  // roundOneWinner(submissionArrayEven, submissionArrayOdd);
   res.render('results', {
+    title: 'Voting Results',
+    evenTally: submissionArrayEven,
+    oddTally: submissionArrayOdd
+  });
+
+});
+
+router.post('/roundTwo', function(req, res, next) {
+  // sortSubmission(submissionArray, submissionArrayEven, submissionArrayOdd);
+  roundOneWinner(submissionArrayEven, submissionArrayOdd);
+  console.log(winnerOdd);
+  console.log(winnerEven);
+  res.render('roundTwo', {
+      title: "Round Two",
+      evenTally: winnerEven,
+      oddTally: winnerOdd
+    });
+});
+
+router.post('/voteTwo/:id', function(req, res, next) {
+  // roundOneWinner(submissionArrayEven, submissionArrayOdd);
+  // sortSubmission(submissionArray, submissionArrayEven, submissionArrayOdd);
+  for (var i = 0; i < submissionArray.length; i++) {
+    if(submissionArray[i].id === req.params.id) {
+      submissionArray[i].votes += 1;
+    }
+  }
+});
+
+router.post('/resultsRoundTwo', function(req, res, next) {
+  // sortSubmission(submissionArray, submissionArrayEven, submissionArrayOdd);
+  res.render('resultsRoundTWo', {
     title: 'Voting Results',
     evenTally: submissionArrayEven,
     oddTally: submissionArrayOdd

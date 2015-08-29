@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+    {% block content %}
+
+    <h2>{{ Title }}</h2>
+    <div class="row">
+    <div class="col-xs-offset-1 col-xs-4" align="center">
+
+    <div class="bs-example" data-example-id="striped-table">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+
+          <th>Vote</th>
+          <th>githubName</th>
+          <th>githubURL</th>
+          <th>githubImage</th>
+
+        </tr>
+      </thead>
+      <tbody>
+
+          {% for entry in evenTally %}
+          <tr>
+       <!--    <td><button class="btn btn-default" name="{{entry.id}}" type="submit">Vote</button></td> -->
+          <form method = "post" action = "/vote/{{ entry.id }}">
+            <td><input type="submit" value="Vote for {{entry.id}}" name="{{entry.id}}" id="{{entry.id}}" class="form-control"></td>
+          </form>
+          <td>{{ entry.githubName }}</td>
+          <td>{{ entry.githubURL }}</td>
+          <td>{{ entry.githubImage }}</td>
+          </tr>
+          {% endfor %}
+
+
+      </tbody>
+    </table>
+
+     </div>
+     </div>
+
+     <div class="col-xs-offset-1 col-xs-4" align="center">
+
+    <div class="bs-example" data-example-id="striped-table">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+
+          <th>Vote</th>
+          <th>githubName</th>
+          <th>githubURL</th>
+          <th>githubImage</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+
+           {% for entry in oddTally %}
+          <tr>
+           <form method = "post" action = "/voteTwo/{{ entry.id }}">
+            <td><input type="submit" value="Vote for {{entry.id}}" name="{{entry.id}}" id="{{entry.id}}" class="form-control"></td>
+          </form>
+          <td>{{ entry.githubName }}</td>
+          <td>{{ entry.githubURL }}</td>
+          <td>{{ entry.githubImage }}</td>
+          </tr>
+          {% endfor %}
+
+
+      </tbody>
+    </table>
+
+     </div>
+  </div>
+
+
+  </div>
+
+  <div class="row">
+
+    <div class="col-xs-12 text-center">
+      <form method='POST' action='/resultsRoundTwo'>
+      <div class="form-group">
+
+      </div>
+      <button type="submit" class="btn btn-primary">View Vote Tally</button>
+    </form>
+
+    </div>
+
+  </div>
+
+    {% endblock %}
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+  </body>
+</html>
