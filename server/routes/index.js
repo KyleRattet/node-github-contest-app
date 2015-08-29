@@ -57,16 +57,16 @@ var winnerEvenTwo = [];
 var winnerOddTwo = [];
 
 
-// var s1 = new Submission("s1", "1");
-// var s2 = new Submission("s2", "2");
-// var s3 = new Submission("s3", "1");
-// var s4 = new Submission("s4", "1");
-// var s5 = new Submission("s5", "1");
-// var s6 = new Submission("s6", "1");
-// var s7 = new Submission("s7", "1");
-// var s8 = new Submission("s8", "1");
+var s1 = new Submission("s1", "1");
+var s2 = new Submission("s2", "2");
+var s3 = new Submission("s3", "1");
+var s4 = new Submission("s4", "1");
+var s5 = new Submission("s5", "1");
+var s6 = new Submission("s6", "1");
+var s7 = new Submission("s7", "1");
+var s8 = new Submission("s8", "1");
 
-// var submissionArray = [s1, s2, s3, s4, s5, s6, s7, s8];
+var submissionArray = [s1, s2, s3, s4, s5, s6, s7, s8];
 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Submissions' });
@@ -119,7 +119,7 @@ router.post('/results', function(req, res, next) {
   // sortSubmission(submissionArray, submissionArrayEven, submissionArrayOdd);
   // roundOneWinner(submissionArrayEven, submissionArrayOdd);
   res.render('results', {
-    title: 'Voting Results',
+    title: 'Round One Results',
     evenTally: submissionArrayEven,
     oddTally: submissionArrayOdd
   });
@@ -150,7 +150,7 @@ router.post('/voteTwo/:id', function(req, res, next) {
 router.post('/resultsRoundTwo', function(req, res, next) {
   // sortSubmission(submissionArray, submissionArrayEven, submissionArrayOdd);
   res.render('resultsRoundTwo', {
-    title: 'Voting Results',
+    title: 'Round Two Results',
     evenTally: winnerEven,
     oddTally: winnerOdd
   });
@@ -183,7 +183,7 @@ router.post('/resultsRoundThree', function(req, res, next) {
   } else winner = winnerOddTwo[0].githubName;
 
   res.render('resultsRoundThree', {
-    title: 'Voting Results',
+    title: 'Final Round',
     evenTally: winnerEvenTwo,
     oddTally: winnerOddTwo,
     winner: winner
