@@ -82,6 +82,8 @@ router.post('/vote/:id', function(req, res, next) {
     }
   }
 
+
+
   // for (var i = 0; i < submissionArrayEven.length; i++) {
   //   if (req.params.id ===submissionArrayEven[i].id) {
   //     console.log("even button team");
@@ -101,16 +103,19 @@ router.post('/vote/:id', function(req, res, next) {
   // console.log(submissionArray[i].votes);
   // console.log(submissionArray[j].githubName);
   // console.log(submissionArray[j].votes);
-  res.render('voting', {
-      even: submissionArrayEven,
-      odd: submissionArrayOdd
-    });
+  // res.render('voting', {
+  //     even: submissionArrayEven,
+  //     odd: submissionArrayOdd
+  //   });
 });
 
 router.post('/results', function(req, res, next) {
+  // sortSubmission(submissionArray, submissionArrayEven, submissionArrayOdd);
   res.render('results', {
     title: 'Voting Results',
-    tally: submissionArray[0].votes });
+    evenTally: submissionArrayEven,
+    oddTally: submissionArrayOdd
+  });
 });
 
 

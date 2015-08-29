@@ -11,12 +11,26 @@
 
     <h1>{{ title }}</h1>
 
-    <div id="voting results">
+    <div id="evenVotes">
 
+      <h2>Even Tally</h2>
+      {% for tally in evenTally %}
+        <p>githubName: {{tally.githubName}}; Votes: {{tally.votes}}</p>
+      {% endfor %}
 
-      {{ tally }}
 
     </div>
+
+     <div id="oddVotes">
+
+       <h2>Odd Tally</h2>
+      {% for tally in oddTally %}
+        <p>githubName: {{tally.githubName}}; Votes: {{tally.votes}}</p>
+      {% endfor %}
+
+    </div>
+
+
     {% endblock %}
     <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
