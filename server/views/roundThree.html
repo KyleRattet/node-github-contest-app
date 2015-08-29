@@ -30,7 +30,7 @@
           {% for entry in evenTally %}
           <tr>
        <!--    <td><button class="btn btn-default" name="{{entry.id}}" type="submit">Vote</button></td> -->
-          <form method = "post" action = "/voteTwo/{{ entry.id }}">
+          <form method = "post" action = "/voteThree/{{ entry.id }}">
             <td><input type="submit" value="Vote for {{entry.id}}" name="{{entry.id}}" id="{{entry.id}}" class="form-control"></td>
           </form>
           <td>{{ entry.githubName }}</td>
@@ -65,7 +65,7 @@
 
            {% for entry in oddTally %}
           <tr>
-           <form method = "post" action = "/voteTwo/{{ entry.id }}">
+           <form method = "post" action = "/voteThree/{{ entry.id }}">
             <td><input type="submit" value="Vote for {{entry.id}}" name="{{entry.id}}" id="{{entry.id}}" class="form-control"></td>
           </form>
           <td>{{ entry.githubName }}</td>
@@ -87,7 +87,7 @@
   <div class="row">
 
     <div class="col-xs-12 text-center">
-      <form method='POST' action='/resultsRoundTwo'>
+      <form method='POST' action='/resultsRoundThree'>
       <div class="form-group">
 
       </div>
