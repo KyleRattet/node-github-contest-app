@@ -33,8 +33,8 @@
             <td><input type="submit" value="Vote for {{entry.id}}" name="{{entry.id}}" id="{{entry.id}}" class="form-control"></td>
           </form>
           <td>{{ entry.githubName }}</td>
-          <td>{{ entry.githubURL }}</td>
-          <td>{{ entry.githubImage }}</td>
+          <td><a href={{ entry.githubURL }}>Link to gitHub</a></td>
+          <td><img class= "pics" width="40" height="40"src = {{ entry.githubImage }} ></td>
           </tr>
           {% endfor %}
 
@@ -68,8 +68,8 @@
             <td><input type="submit" value="Vote for {{entry.id}}" name="{{entry.id}}" id="{{entry.id}}" class="form-control"></td>
           </form>
           <td>{{ entry.githubName }}</td>
-          <td>{{ entry.githubURL }}</td>
-          <td>{{ entry.githubImage }}</td>
+          <td><a href={{ entry.githubURL }}>Link to gitHub</a></td>
+              <td><img class= "pics" width="40" height="40" src = {{ entry.githubImage }} ></td>
           </tr>
           {% endfor %}
 

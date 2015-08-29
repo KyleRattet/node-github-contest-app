@@ -5,7 +5,7 @@ var router = express.Router();
 function Submission (githubName, githubURL, githubImage) {
   this.githubName = githubName;
   this.githubURL = githubURL;
-  this.githubImage = githubImage;
+  this.githubImage = githubImage || "https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png";
   this.id = githubName;
   this.votes = 0;
   ///create unique id
