@@ -190,5 +190,10 @@ router.post('/resultsRoundThree', function(req, res, next) {
   });
 });
 
+router.post('/reset', function(req, res, next) {
+  submissionArray = [];
+  res.redirect('/');
+});
+
 
 module.exports = router;
